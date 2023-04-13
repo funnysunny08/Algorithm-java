@@ -3,22 +3,23 @@ import java.util.*;
 // 프로그래머스 - 타겟 넘버
 public class Solution_016 {
     int answer = 0;
-
-    public void dfs (int[] numbers, int depth, int target, int sum) {
-        if (depth == numbers.length) { // 마지막 노드까지 탐색한 경우
-            if (target == sum) answer++;
+    void dfs(int[] numbers, int target, int depth, int curr) {
+        if(depth == numbers.length - 1) {
+            int x = curr + numbers[depth];
+            int y = curr - numbers[depth];
+            if (x == target) answer++;
+            if (y == target) answer++;
+            return;
         } else {
-            dfs(numbers, depth + 1, target, sum + numbers[depth]);
-            dfs(numbers, depth + 1, target, sum - numbers[depth]);
+            int x = curr + numbers[depth];
+            int y = curr - numbers[depth];
+            dfs(numbers, target, depth + 1, x);
+            dfs(numbers, target, depth + 1, y);
         }
     }
-
-
+    
     public int solution(int[] numbers, int target) {
-        dfs(numbers, 0, target, 0);
-
+        dfs(numbers, target, 0, 0);
         return answer;
     }
-
-
 }
