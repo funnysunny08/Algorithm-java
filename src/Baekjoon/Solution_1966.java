@@ -5,28 +5,30 @@ public class Solution_1966 {
     static int T;
     static List<Integer> ans = new ArrayList<>();
 
-    public static void solution(LinkedList<int[]> q, int target) {
-        int order = 0;
-        while (!q.isEmpty()) {
-            int[] now = q.poll(); // 가장 앞에 원소 뽑음, now[0] -> 중요도, now[1] -> 인덱스
-            // 1. 현재의 중요도가 queue 내에서 제일 큰 중요도인지 확인! (공동 1순위여도 괜찮다)
+    public static void solution(LinkedList<int[]> list, int location) {
+        int print = 1;
+        while(!list.isEmpty()) {
+            int[] curr = list.pop(); // 현재 맨 앞에 있는 문서
             boolean isMax = true;
-            for (int i = 0; i < q.size(); i++) {
-                if (now[0] < q.get(i)[0]) { // 현재의 중요도가 최대값이 아닌 상황
+            for (int[] l: list) { // 현재 문서보다 중요도가 높은 문서가 있는지 체크
+                if (l[0] > curr[0]) {
                     isMax = false;
+                    break;
                 }
             }
-            if (isMax) { // 현재 값이 제일 큰 중요도 -> 출력하기
-                order++;
-                if (now[1] == target) {
-                    ans.add(order);
+            if (isMax) { // 출력
+                if (curr[1] == location) {
+                    ans.add(print);
+                    break;
+                } else {
+                    print++;
                 }
-            } else { // 현재값보다 더 큰 중요도가 있기 때문에 뒤로 보내기
-                q.add(now);
+
+            } else { // 뒤로 넘겨
+                list.add(curr);
             }
         }
     }
-
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -34,14 +36,14 @@ public class Solution_1966 {
         for (int i = 0; i < T; i++) {
             int n = sc.nextInt(); //
             int target = sc.nextInt();
-            LinkedList<int[]> queue = new LinkedList<>();
+            LinkedList<int[]> list = new LinkedList<>();
             for (int j = 0; j < n; j++) {
                 int ele = sc.nextInt();
                 int[] arr = {ele, j}; // arr[0] -> 중요도, arr[1] -> 인덱스
-                queue.add(arr);
+                list.add(arr);
             }
             // -- i 번째 테스트 입력 받기 끝 --
-            solution(queue, target);
+            solution(list, target);
         }
 
         for (Integer a: ans) {
