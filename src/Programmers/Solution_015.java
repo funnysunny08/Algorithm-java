@@ -34,7 +34,7 @@ public class Solution_015 {
 
         // 가능한 답이 없으면 0 반환
         if (gcdA == -1 && gcdB == -1) return 0;
-        // 둘 중 큰 값 정답으로 반환
+            // 둘 중 큰 값 정답으로 반환
         else return Math.max(gcdA, gcdB);
     }
 
