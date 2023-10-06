@@ -4,14 +4,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Stack;
-import java.util.StringTokenizer;
 
 // 백준 3986번: 좋은 단어
 public class 좋은단어 {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
         int N = Integer.parseInt(br.readLine());
 
         Stack<Character> stack;
