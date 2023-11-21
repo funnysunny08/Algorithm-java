@@ -9,6 +9,9 @@ import java.util.Set;
 public class N으로표현 {
 
     public static int solution(int N, int number) {
+        if (N == number) {
+            return 1;
+        }
         List<Set<Integer>> dp = new ArrayList<>();
         for (int i = 0; i <= 8; i++) { // 1부터 8까지만 담을거임!
             dp.add(new HashSet<>());
