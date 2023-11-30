@@ -36,8 +36,8 @@ public class 경로찾기 {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
-                if (map[i][j] == 1) sb.append(0).append(" ");
-                else sb.append(1).append(" ");
+                if (map[i][j] == 1) sb.append(1).append(" ");
+                else sb.append(0).append(" ");
             }
             sb.append("\n");
         }
