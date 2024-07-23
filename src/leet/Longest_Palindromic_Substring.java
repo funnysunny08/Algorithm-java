@@ -1,7 +1,7 @@
 package leet;
 
 //5. Longest Palindromic Substring
-public class Solution001 {
+public class Longest_Palindromic_Substring {
     static int max_length = -1;
     static String answer;
     static String original;
