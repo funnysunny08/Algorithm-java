@@ -38,10 +38,10 @@ public class BOJ_5972 {
         while (!pq.isEmpty()) {
             Road now = pq.poll();
             if (now.idx == N) return dist[N];
-            if (dist[now.idx] < now.cows) continue;
+            if (dist[now.idx] < now.cows) continue; // 이미 dist[now.idx]는 갱신 됐어! 필요 없어.
             for (int i = 0; i < map.get(now.idx).size(); i++) {
                 Road next = map.get(now.idx).get(i);
-                if (dist[next.idx] > now.cows + next.cows) {
+                if (dist[next.idx] > now.cows + next.cows) { // now.idx 통해서 가는 게 더 낫네
                     dist[next.idx] = now.cows + next.cows;
                     pq.offer(new Road(next.idx, dist[next.idx]));
                 }
