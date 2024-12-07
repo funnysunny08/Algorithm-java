@@ -16,7 +16,7 @@ public class BOJ_7490 {
 
     private static void dfs(int num, String str) {
         if (num > N) {
-            if (calculate(str)) answer.add(str);
+            if (calculate(str.replaceAll(" ", ""))) answer.add(str);
             return;
         }
         for (int i = 0; i < 3; i++) {
@@ -26,11 +26,11 @@ public class BOJ_7490 {
 
     private static boolean calculate(String str) {
         String[] output = str.split("(?<=[-+*/])|(?=[-+*/])|(?<=[0-9])(?=[-+*/])");
-        if (output.length == 1) return parseInteger(output[0]) == 0;
-        int a = parseInteger(output[0]);
+        if (output.length == 1) return Integer.parseInt(output[0]) == 0;
+        int a = Integer.parseInt(output[0]);
         for (int i = 1; i < output.length- 1; i += 2) {
             String op = output[i];
-            int b = parseInteger(output[i + 1]);
+            int b = Integer.parseInt(output[i + 1]);
             if (Objects.equals(op, "+")) {
                 a += b;
             } else {
@@ -38,10 +38,6 @@ public class BOJ_7490 {
             }
         }
         return a == 0;
-    }
-
-    private static int parseInteger(String str) {
-        return Integer.parseInt(str.replaceAll(" ", ""));
     }
 
     public static void main(String[] args) throws IOException {
