@@ -3,23 +3,11 @@ package boj;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.StringTokenizer;
 
 // 2877. 4와 7
 public class BOJ_2877 {
     static int len;
-    static List<String> list = new ArrayList<>();
-
-    private static void dfs(int idx, String str) {
-        if (idx == len) {
-            list.add(str);
-            return;
-        }
-        dfs(idx + 1, str + "4");
-        dfs(idx + 1, str + "7");
-    }
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
