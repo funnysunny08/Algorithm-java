@@ -22,7 +22,7 @@ public class BOJ_2015 {
 
         HashMap<Integer, Integer> hm = new HashMap<>();
         hm.put(0, 1);
-        int answer = 0;
+        long answer = 0;
         for (int i = 1; i <= N; i++) {
             answer += hm.getOrDefault(sum[i] - K, 0);
             hm.put(sum[i], hm.getOrDefault(sum[i], 0) + 1);
